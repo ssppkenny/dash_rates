@@ -20,6 +20,7 @@ app = dash.Dash(__name__)
 
 app.layout = html.Div([
     dcc.Graph(id='graph', figure=create_figure(create_df(1)), style={'width': '50%'}),
+    html.Label(['Years']),
     dcc.Dropdown([1,2,3,4,5], 1, id='years', style={'width': '50%'})
     ])
 
