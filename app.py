@@ -1,14 +1,14 @@
 import dash
 import asyncio
 from fxtop import get_rates
-from dash import html
+from dash import html, Input, Output, callback
 from dash import dcc
 import pandas as pd
 import plotly.express as px
 
 
-def create_df():
-    dfs = asyncio.run(get_rates(1))
+def create_df(years):
+    dfs = asyncio.run(get_rates(years))
     return pd.concat(dfs)
 
 def create_figure(df):
@@ -19,8 +19,17 @@ def create_figure(df):
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-     dcc.Graph(id='graph', figure=create_figure(create_df()))
+    dcc.Graph(id='graph', figure=create_figure(create_df(1)), style={'width': '50%'}),
+    dcc.Dropdown([1,2,3,4,5], 1, id='years', style={'width': '50%'})
     ])
+
+@app.callback(
+        Output(component_id="graph", component_property="figure"),
+        Input(component_id="years", component_property="value")
+        )
+def update_graph(value):
+    return create_figure(create_df(int(value)))
+    
 
 
 if __name__ == '__main__':
