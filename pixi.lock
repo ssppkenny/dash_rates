@@ -63,6 +63,29 @@ package:
   purls:
   - pkg:pypi/aiosignal
 - platform: osx-arm64
+  name: altgraph
+  version: 0.17.4
+  category: main
+  manager: conda
+  dependencies:
+  - python >=3.6
+  - setuptools
+  url: https://conda.anaconda.org/conda-forge/noarch/altgraph-0.17.4-pyhd8ed1ab_0.conda
+  hash:
+    md5: 4f1604e523767b99418ca35cdfc7f570
+    sha256: fdb91d1afe45054dc769f6f5613517316329e631cf9591225c72adc825088316
+  build: pyhd8ed1ab_0
+  arch: aarch64
+  subdir: osx-arm64
+  build_number: 0
+  license: MIT
+  license_family: MIT
+  noarch: python
+  size: 24113
+  timestamp: 1695643164252
+  purls:
+  - pkg:pypi/altgraph
+- platform: osx-arm64
   name: ansi2html
   version: 1.8.0
   category: main
@@ -2117,6 +2140,29 @@ package:
   size: 274631
   timestamp: 1701222947083
 - platform: osx-arm64
+  name: macholib
+  version: 1.16.3
+  category: main
+  manager: conda
+  dependencies:
+  - altgraph >=0.17
+  - python >=2.7,<3|>=3.4
+  url: https://conda.anaconda.org/conda-forge/noarch/macholib-1.16.3-pyhd8ed1ab_0.conda
+  hash:
+    md5: 983fd756ad9e76fb59a285a291e0d4d9
+    sha256: e1ce04b23bd631e2aa8de2a0c92810433722f4f685182e6f7e6487f6b5cc2d72
+  build: pyhd8ed1ab_0
+  arch: aarch64
+  subdir: osx-arm64
+  build_number: 0
+  license: MIT
+  license_family: MIT
+  noarch: python
+  size: 38653
+  timestamp: 1695643239171
+  purls:
+  - pkg:pypi/macholib
+- platform: osx-arm64
   name: markupsafe
   version: 2.1.3
   category: main
@@ -2965,6 +3011,54 @@ package:
   timestamp: 1700608076927
   purls:
   - pkg:pypi/pygments
+- platform: osx-arm64
+  name: pyinstaller
+  version: 6.2.0
+  category: main
+  manager: conda
+  dependencies:
+  - altgraph
+  - libzlib >=1.2.13,<1.3.0a0
+  - macholib >=1.8
+  - packaging >=20.0
+  - pyinstaller-hooks-contrib >=2021.4
+  - python >=3.12,<3.13.0a0
+  - python >=3.12,<3.13.0a0 *_cpython
+  - python_abi 3.12.* *_cp312
+  - setuptools >=42.0.0
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/pyinstaller-6.2.0-py312ha17c255_0.conda
+  hash:
+    md5: f262cec3572f845c1714532ab7859ab3
+    sha256: 412b960cb89948b5bba732517c0b98c586638478b084a436a0f5f698900cb7bd
+  build: py312ha17c255_0
+  arch: aarch64
+  subdir: osx-arm64
+  build_number: 0
+  license: GPL-2.0-or-later WITH Bootloader-exception
+  license_family: GPL
+  size: 1595639
+  timestamp: 1699729227891
+  purls:
+  - pkg:pypi/pyinstaller
+- platform: osx-arm64
+  name: pyinstaller-hooks-contrib
+  version: '2023.10'
+  category: main
+  manager: conda
+  dependencies:
+  - python >=3
+  url: https://conda.anaconda.org/conda-forge/noarch/pyinstaller-hooks-contrib-2023.10-pyhd8ed1ab_0.conda
+  hash:
+    md5: 8415c7b8584bc3c6ca085421a2d63b19
+    sha256: b6d10f64043bd3123ae5fe850057498440fe0c5ffc5dfb6b3197b927d99eb112
+  build: pyhd8ed1ab_0
+  arch: aarch64
+  subdir: osx-arm64
+  build_number: 0
+  license: Apache-2.0 OR GPL-2.0-or-later
+  noarch: python
+  size: 120590
+  timestamp: 1697245078311
 - platform: osx-arm64
   name: pyobjc-core
   version: '10.0'
