@@ -58,10 +58,15 @@ def update_graph_years(value, cur_from_val, cur_to_val):
     Input(component_id="cur_from", component_property="value"),
     State(component_id="years", component_property="value"),
     State(component_id="cur_to", component_property="value"),
+    State(component_id="cur_from", component_property="value"),
     prevent_initial_call=True
 )
-def update_graph_cur_from(value, years_val, cur_to_val):
-    return create_figure(create_df(int(years_val), value, cur_to_val))
+def update_graph_cur_from(value, years_val, cur_to_val, cur_from_val):
+    if cur_from_val != cur_to_val:
+        return create_figure(create_df(int(years_val), value, cur_to_val))
+    else:
+        return dash.no_update
+
 
 
 @app.callback(
@@ -69,10 +74,15 @@ def update_graph_cur_from(value, years_val, cur_to_val):
     Input(component_id="cur_to", component_property="value"),
     State(component_id="years", component_property="value"),
     State(component_id="cur_from", component_property="value"),
+    State(component_id="cur_to", component_property="value"),
     prevent_initial_call=True
 )
-def update_graph_cur_to(value, years_val, cur_from_val):
-    return create_figure(create_df(int(years_val), cur_from_val, value))
+def update_graph_cur_to(value, years_val, cur_from_val, cur_to_val):
+    if cur_from_val != cur_to_val:
+        return create_figure(create_df(int(years_val), cur_from_val, value))
+    else:
+        return dash.no_update
+
 
 
 port = 8050
