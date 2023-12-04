@@ -31,10 +31,10 @@ async def run_request(dt, cur_from = 'CHF', cur_to = 'RUB'):
         return df
 
 
-async def get_rates(years):
+async def get_rates(years, cur_from='CHF', cur_to='RUB'):
     dt = datetime.now()
     from_dts = [dt - relativedelta(years=y) for y in range(years)]
-    tasks = [asyncio.create_task(run_request(dt)) for dt in from_dts]
+    tasks = [asyncio.create_task(run_request(dt, cur_from, cur_to)) for dt in from_dts]
     return [await task for task in tasks]
 
 
