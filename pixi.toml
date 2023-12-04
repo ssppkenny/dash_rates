@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Exchange rates for some currencies"
 authors = ["Sergey Mikhno <sergey.mikhno@galenica.com>"]
 channels = ["conda-forge"]
-platforms = ["osx-arm64"]
+platforms = ["osx-arm64", "linux-64"]
 
 [tasks]
 
