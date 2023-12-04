@@ -41,6 +41,7 @@ app.layout = html.Div(
     ]
 )
 
+currencies = ["CHF", "USD", "RUB"]
 
 @app.callback(
     Output(component_id="graph", component_property="figure", allow_duplicate=True),
@@ -55,6 +56,7 @@ def update_graph_years(value, cur_from_val, cur_to_val):
 
 @app.callback(
     Output(component_id="graph", component_property="figure", allow_duplicate=True),
+    Output(component_id="cur_to", component_property="options"),
     Input(component_id="cur_from", component_property="value"),
     State(component_id="years", component_property="value"),
     State(component_id="cur_to", component_property="value"),
@@ -62,15 +64,13 @@ def update_graph_years(value, cur_from_val, cur_to_val):
     prevent_initial_call=True
 )
 def update_graph_cur_from(value, years_val, cur_to_val, cur_from_val):
-    if cur_from_val != cur_to_val:
-        return create_figure(create_df(int(years_val), value, cur_to_val))
-    else:
-        return dash.no_update
+    return create_figure(create_df(int(years_val), value, cur_to_val)), [c for c in currencies if c != value]
 
 
 
 @app.callback(
     Output(component_id="graph", component_property="figure", allow_duplicate=True),
+    Output(component_id="cur_from", component_property="options"),
     Input(component_id="cur_to", component_property="value"),
     State(component_id="years", component_property="value"),
     State(component_id="cur_from", component_property="value"),
@@ -78,10 +78,7 @@ def update_graph_cur_from(value, years_val, cur_to_val, cur_from_val):
     prevent_initial_call=True
 )
 def update_graph_cur_to(value, years_val, cur_from_val, cur_to_val):
-    if cur_from_val != cur_to_val:
-        return create_figure(create_df(int(years_val), cur_from_val, value))
-    else:
-        return dash.no_update
+    return create_figure(create_df(int(years_val), cur_from_val, value)), [c for c in currencies if c != value]
 
 
 

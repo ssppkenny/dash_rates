@@ -19,7 +19,6 @@ async def run_request(dt, cur_from = 'CHF', cur_to = 'RUB'):
 
     async with aiohttp.ClientSession() as session:
         url = f"https://fxtop.com/en/historical-exchange-rates.php?A=1&C1={cur_from}&C2={cur_to}&TR=1&DD1={day_from}&MM1={month_from}&YYYY1={year_from}&B=1&P=&I=1&DD2={day_to}&MM2={month_to}&YYYY2={year_to}&btnOK=Go%21"
-        print(url)
         response = await session.get(url)
         text = await response.text()
         p = HTMLTableParser()
